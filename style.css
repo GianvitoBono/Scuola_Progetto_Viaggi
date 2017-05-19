@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/*
+ *
+ * @author: Gianvito Bono
+ * @date  : 19-05-2017
+ *
+ */
+
+/* CSS generico */
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.openSans {
+  font: "Open Sans", sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.center-vert {
+  position: relative;
+  top: calc(50% - 195px);
+  transform: translateY(50%);
+}
+/*----------------------------------------------------------------------------*/
+
+/* CSS stile custom per il form */
+
+.customStyle {
+    margin:10px auto;
+    max-width: 400px;
+    padding: 20px 12px 10px 20px;
+	  font: 13px "Open Sans", sans-serif;
+}
+.customStyle li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+.customStyle label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+.customStyle input[type=text],
+.customStyle input[type=date],
+.customStyle input[type=datetime],
+.customStyle input[type=number],
+.customStyle input[type=search],
+.customStyle input[type=time],
+.customStyle input[type=url],
+.customStyle input[type=email],
+textarea,
+select{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    border-radius: 100px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+}
+.customStyle input[type=text]:focus,
+.customStyle input[type=date]:focus,
+.customStyle input[type=datetime]:focus,
+.customStyle input[type=number]:focus,
+.customStyle input[type=search]:focus,
+.customStyle input[type=time]:focus,
+.customStyle input[type=url]:focus,
+.customStyle input[type=email]:focus,
+.customStyle textarea:focus,
+.customStyle select:focus{
+    border-radius: 100px;
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+.customStyle .field-divided{
+    width: 49%;
+}
+
+.customStyle .field-long{
+    width: 100%;
+}
+.customStyle .field-select{
+    width: 100%;
+}
+.customStyle .field-textarea{
+    height: 100px;
+}
+.customStyle input[type=submit], .customStyle input[type=button]{
+    text-align: center;
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+.customStyle input[type=submit]:hover, .customStyle input[type=button]:hover{
+    text-align: center;
+    background: #4691A4;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.customStyle .required{
+    color:red;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* CSS menu */
+
+nav {
+    width: 100%;
+    background-color: #086788;
+    margin: 0;
+    padding: 20px;
+    z-index: 9999;
+    position: fixed;
+    /* Ombra navbar */
+    -webkit-box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+    -moz-box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+    box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+}
+
+.menu ul,
+.lang_chooser ul {
+  width: 100%;
+  padding: 20em;
+  margin: 0 auto;
+  display: block;
+  list-style-type: none;
+}
+
+.menu li {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.lang_chooser li {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.menu li,
+.lang_chooser li {
+  display: inline;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu a:hover {
+  color: #BEBEBE;
+}
+
+/* CSS content main */
+.content div {
+  height: calc(100% - 195px);
+  padding-left: 15%;
+  padding-right: 15%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 94px;
+  z-index: 1;
+}
+.centered div {
+  width: 70%;
+  align-self: center;
+  z-index: 2;
+}
+
+/* CSS footer */
+
+footer {
+  width: 100%;
+  background-color: #086788;
+  position: fixed;
+  margin: 0;
+  padding: 20px;
+  z-index: 9999;
+  bottom: 0;
+  /* Ombra navbar */
+  -webkit-box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+  -moz-box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+  box-shadow: 0px 0px 4px 1.5px rgba(71,71,71,1);
+}
