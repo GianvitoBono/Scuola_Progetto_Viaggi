@@ -52,7 +52,7 @@
     $count = fgets($file,1000);
     fclose($file);
     $tmp = $count;
-    $count++;
+    $count = $count + 1;
     $file = fopen("./data/ucount.txt","w");
     fwrite($file, $count);
     fclose($file);

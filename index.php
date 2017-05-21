@@ -6,7 +6,7 @@
 <?php
   $lang = isset($_GET['lang']) ? $_GET['lang'] : null;
   if($lang == null) {
-    header("Location: " . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . "/index.php?lang=en");
+    header("Location: " . rtrim($_SERVER['PHP_SELF']) . "?lang=en");
     die();
   }
 ?>
@@ -20,7 +20,7 @@
     <?php include 'navbar.php'; ?>
     <div class="content">
       <div class="centered">
-        <h1 class="center center-vert"><?php echo getString("welcome", test_input($_GET['lang'])); ?></h1>
+        <h1 class="center center-vert"><?php echo get_string("welcome", test_input($_GET['lang'])); ?></h1>
       </div>
     </div>
     <?php include 'footer.php'; ?>

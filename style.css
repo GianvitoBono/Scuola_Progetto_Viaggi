@@ -28,7 +28,11 @@ body {
 .center-vert {
   position: relative;
   top: calc(50% - 195px);
-  transform: translateY(50%);
+  transform: translateY(70%);
+}
+
+.error {
+  color: red;
 }
 /*----------------------------------------------------------------------------*/
 
@@ -60,6 +64,7 @@ body {
 .customStyle input[type=time],
 .customStyle input[type=url],
 .customStyle input[type=email],
+.customStyle input[type=password],
 textarea,
 select{
     box-sizing: border-box;
@@ -83,6 +88,7 @@ select{
 .customStyle input[type=time]:focus,
 .customStyle input[type=url]:focus,
 .customStyle input[type=email]:focus,
+.customStyle input[type=password]:focus,
 .customStyle textarea:focus,
 .customStyle select:focus{
     border-radius: 100px;
@@ -106,6 +112,7 @@ select{
 }
 .customStyle input[type=submit], .customStyle input[type=button]{
     text-align: center;
+    border-radius: 100px;
     background: #4B99AD;
     padding: 8px 15px 8px 15px;
     border: none;
@@ -120,6 +127,15 @@ select{
 }
 .customStyle .required{
     color:red;
+}
+
+.customStyle input[type=text]::placeholder {
+  text-align: center;
+}
+
+.customStyle input[type=text],
+.customStyle input[type=password] {
+  text-align: center;
 }
 
 /*----------------------------------------------------------------------------*/

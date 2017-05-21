@@ -10,8 +10,14 @@
 
     $sql = "SELECT uid
             FROM users
-            WHERE username == $uname";
+            WHERE username LIKE '$uname'";
     $result = mysqli_query($conn, $sql);
+
+    if(!$result) {
+      echo mysqli_error($conn);
+      mysqli_close($conn);
+      return false;
+    }
 
     if (mysqli_num_rows($result) > 0) {
       while($row = mysqli_fetch_assoc($result)) {
