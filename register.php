@@ -37,18 +37,24 @@
                         echo get_string('data_error', test_input($_GET['lang']));
                         echo "<br><br>";
                       }
-                      $uid = login($uname, $passwd);
+                      $uid = login($uname, $passwd) == 0;
                       if($uid == 0) {
                         echo get_string('login_error', test_input($_GET ['lang'])) ;
                         echo "<br><br>";
+                      } else {
+
                       }
                     }
                   ?>
                 </center>
               </span>
+              <li><input type="text" name="name" class="field-divided" placeholder="<?php get_string('name', test_input($_GET['lang'])) ?>" />&nbsp;<input type="text" name="surname" class="field-divided" placeholder="<?php get_string('surname', test_input($_GET['lang'])) ?>" /></li>
+              <br>
+              <input type="email" name="email" class="field-long" placeholder="<?php get_string('email', test_input($_GET['lang'])) ?>"/>
+              <br><br>
               <input type="text" name="uname" class="field-long" placeholder="<?php echo get_string('uname', test_input($_GET ['lang'])); ?>" />
               <br><br>
-              <input type="password" name="passwd" class="field-long" placeholder="<?php echo get_string('passwd', test_input($_GET ['lang'])); ?>" />
+              <input type="password" name="passwd" class="field-divided" placeholder="<?php echo get_string('passwd', test_input($_GET ['lang'])); ?>" />&nbsp;<input type="password" name="re_passwd" class="field-divided" placeholder="<?php echo get_string('re_passwd', test_input($_GET ['lang'])); ?>" />
               <br><br>
             </li>
             <li>

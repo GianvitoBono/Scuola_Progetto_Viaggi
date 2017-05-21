@@ -18,6 +18,8 @@
     $str['uname_it'] = "Nome utente";
     $str['passwd_it'] = "Password";
     $str['send_it'] = "Invia";
+    $str['data_error_it'] = "Inserire nome utente e password";
+    $str['login_error_it'] = "Nome utente o password errati";
 
     //Inglese------------------------------------
     $str['home_en'] = "HOME";
@@ -28,6 +30,8 @@
     $str['uname_en'] = "Username";
     $str['passwd_en'] = "Password";
     $str['send_en'] = "Send";
+    $str['data_error_en'] = "Enter username and password";
+    $str['login_error_en'] = "Incorrect username or password";
 
     //Russo--------------------------------------
     $str['home_ru'] = "ГЛАВНАЯ СТРАНИЦА";
@@ -38,6 +42,8 @@
     $str['uname_ru'] = "Имя пользователя";
     $str['passwd_ru'] = "Пароль";
     $str['send_ru'] = "послать";
+    $str['data_error_ru'] = "Введите имя пользователя и пароль";
+    $str['login_error_ru'] = "Неверное имя пользователя или пароль";
 
     //Francese-----------------------------------
     $str['home_fr'] = "PAGE D'ACCUEIL";
@@ -48,6 +54,8 @@
     $str['uname_fr'] = "Nom d'utilisateur";
     $str['passwd_fr'] = "Mot de passe";
     $str['send_fr'] = "Envoyer";
+    $str['data_error_fr'] = "Entrez votre nom d'utilisateur et mot de passe";
+    $str['login_error_fr'] = "Nom d'utilisateur ou mot de passe incorrect";
 
     //Cinese-------------------------------------
     $str['home_cn'] = "主页";
@@ -58,6 +66,8 @@
     $str['uname_cn'] = "用户名";
     $str['passwd_cn'] = "密码";
     $str['send_cn'] = "发送";
+    $str['data_error_cn'] = "输入您的用户名和密码";
+    $str['login_error_cn'] = "无效的用户名或密码";
 
     return $str[$strName.'_'.$lang];
   }
