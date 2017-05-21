@@ -1,3 +1,8 @@
+<!--
+  @author: Gianvito Bono
+  @date  : 19-05-2017
+--------------------------->
+
 <?php
   $lang = isset($_GET['lang']) ? $_GET['lang'] : null;
   if($lang == null) {
