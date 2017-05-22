@@ -31,19 +31,23 @@
 
   function get_key($uid) {
     $keys = file("./data/keys.bin");
-    $exp_line = explode(";;;", $keys[$uid + 1]);
-    if($exp_line[0] == $uid) {
-      return base64_decode($exp_line[1]);
-    }
-    return null;
+		foreach ($key as $kek) {
+			$exp_line = explode(";;;", $key[$uid + 1]);
+	    if($exp_line[0] == $uid) {
+	      return base64_decode($exp_line[1]);
+	    }
+		}
+		return null;
   }
 
   function get_iv($uid) {
     $ivs = file("./data/iv.bin");
-    $exp_line = explode(";;;", $ivs[$uid + 1]);
-    if($exp_line[0] == $uid) {
-      return base64_decode($exp_line[1]);
-    }
+		foreach ($iv as $ivs) {
+			$exp_line = explode(";;;", $ivs[$uid + 1]);
+	    if($exp_line[0] == $uid) {
+	      return base64_decode($exp_line[1]);
+	    }
+		}
     return null;
   }
 
@@ -62,7 +66,7 @@
 
   function gen_key() {
     $secure;
-    $bytes = openssl_random_pseudo_bytes(10, $secure);
+    $bytes = openssl_random_pseudo_bytes(32, $secure);
     return hash('SHA256', $bytes, true);
   }
 

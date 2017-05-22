@@ -129,12 +129,14 @@ select{
     color:red;
 }
 
+.customStyle input[type=text]::placeholder,
 .customStyle input[type=text]::placeholder {
   text-align: center;
 }
 
 .customStyle input[type=text],
-.customStyle input[type=password] {
+.customStyle input[type=password],
+.customStyle input[type=email] {
   text-align: center;
 }
 

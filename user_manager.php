@@ -22,8 +22,8 @@
     if (mysqli_num_rows($result) > 0) {
       while($row = mysqli_fetch_assoc($result)) {
         if(password_verify($passwd, row["password"])) {
-          $_SESSION['uname'] = $uname;
-          $_SESSION['uid'] = $row["uid"];
+          setcookie('uname', $uname);
+          setcookie('uid', $row["uid"]);
           mysqli_close($conn);
           return $row["uid"];
         }
@@ -51,7 +51,6 @@
 
     $c_name = encrypt($name, $key, $iv);
     $c_surname = encrypt($surname, $key, $iv);
-    $c_uname = encrypt($uname, $key, $iv);
     $c_email = encrypt($email, $key, $iv);
 
     //echo "$c_name<br>$c_surname<br>$c_uname<br>$c_email<br>$hash_pwd";
@@ -63,7 +62,7 @@
               '$c_name',
               '$c_surname',
               '$hash_pwd',
-              '$c_uname',
+              '$uname',
               '$c_email'
             );";
 
@@ -72,6 +71,10 @@
       mysqli_close($conn);
       return false;
     }
+
+    setcookie('uname', $uname);
+    setcookie('uid', $uid);
+
     mysqli_close($conn);
     return true;
 

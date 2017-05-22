@@ -18,8 +18,12 @@
     $str['uname_it'] = "Nome utente";
     $str['passwd_it'] = "Password";
     $str['send_it'] = "Invia";
-    $str['data_error_it'] = "Inserire nome utente e password";
+    $str['data_error_it'] = "Riempire tutti i campi";
     $str['login_error_it'] = "Nome utente o password errati";
+    $str['name_it'] = "Nome";
+    $str['surname_it'] = "Cognome";
+    $str['email_it'] = "Email";
+    $str['re_passwd_it'] = "Reinserisci password";
 
     //Inglese------------------------------------
     $str['home_en'] = "HOME";
@@ -30,8 +34,12 @@
     $str['uname_en'] = "Username";
     $str['passwd_en'] = "Password";
     $str['send_en'] = "Send";
-    $str['data_error_en'] = "Enter username and password";
+    $str['data_error_en'] = "Fill in all the fields";
     $str['login_error_en'] = "Incorrect username or password";
+    $str['name_en'] = "Name";
+    $str['surname_en'] = "Surname";
+    $str['email_en'] = "Email";
+    $str['re_passwd_en'] = "Retype password";
 
     //Russo--------------------------------------
     $str['home_ru'] = "ГЛАВНАЯ СТРАНИЦА";
@@ -42,8 +50,12 @@
     $str['uname_ru'] = "Имя пользователя";
     $str['passwd_ru'] = "Пароль";
     $str['send_ru'] = "послать";
-    $str['data_error_ru'] = "Введите имя пользователя и пароль";
+    $str['data_error_ru'] = "Пожалуйста, заполните все поля";
     $str['login_error_ru'] = "Неверное имя пользователя или пароль";
+    $str['name_ru'] = "имя";
+    $str['surname_ru'] = "фамилия";
+    $str['email_ru'] = "электронная почта";
+    $str['re_passwd_ru'] = "Повторно введите пароль";
 
     //Francese-----------------------------------
     $str['home_fr'] = "PAGE D'ACCUEIL";
@@ -54,8 +66,12 @@
     $str['uname_fr'] = "Nom d'utilisateur";
     $str['passwd_fr'] = "Mot de passe";
     $str['send_fr'] = "Envoyer";
-    $str['data_error_fr'] = "Entrez votre nom d'utilisateur et mot de passe";
+    $str['data_error_fr'] = "S'il vous plaît remplir tous les champs";
     $str['login_error_fr'] = "Nom d'utilisateur ou mot de passe incorrect";
+    $str['name_fr'] = "Nom";
+    $str['surname_fr'] = "Nom de famille";
+    $str['email_fr'] = "Email";
+    $str['re_passwd_fr'] = "Ressaisissez le mot de passe";
 
     //Cinese-------------------------------------
     $str['home_cn'] = "主页";
@@ -66,8 +82,12 @@
     $str['uname_cn'] = "用户名";
     $str['passwd_cn'] = "密码";
     $str['send_cn'] = "发送";
-    $str['data_error_cn'] = "输入您的用户名和密码";
+    $str['data_error_cn'] = "请填写所有字段";
     $str['login_error_cn'] = "无效的用户名或密码";
+    $str['name_cn'] = "名";
+    $str['surname_cn'] = "姓";
+    $str['email_cn'] = "";
+    $str['re_passwd_cn'] = "重新输入密码";
 
     return $str[$strName.'_'.$lang];
   }
