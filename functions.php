@@ -86,6 +86,7 @@
     $m_db = "viaggi_db";
 
     $conn = mysqli_connect($m_host, $m_uname, $m_passwd, $m_db);
+    mysqli_set_charset($conn, "utf8");
 
     if(!$conn) {
       echo mysqli_error($conn);

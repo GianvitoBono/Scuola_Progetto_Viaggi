@@ -8,9 +8,17 @@
   function login($uname, $passwd) {
     $conn = getConnection();
 
-    $sql = "SELECT uid
+    $key = get_key($uname);
+    $iv = get_iv($uname);
+
+    if($key == null || $iv == null)
+      return false;
+
+    $c_uname = encrypt($uname, $key, $iv);
+
+    $sql = "SELECT uid, password
             FROM users
-            WHERE username LIKE '$uname'";
+            WHERE username LIKE '$c_uname'";
     $result = mysqli_query($conn, $sql);
 
     if(!$result) {
@@ -21,22 +29,23 @@
 
     if (mysqli_num_rows($result) > 0) {
       while($row = mysqli_fetch_assoc($result)) {
-        if(password_verify($passwd, row["password"])) {
+        if(password_verify($passwd, $row["password"])) {
           setcookie('uname', $uname);
           setcookie('uid', $row["uid"]);
           mysqli_close($conn);
-          return $row["uid"];
+
+          return true;
         }
       }
 
     } else {
       mysqli_close($conn);
-      return 0;
+      return false;
     }
 
   }
 
-  function register($uname, $passwd, $name, $surname, $email) {
+  function register($name, $surname, $uname, $passwd, $email) {
     $conn = getConnection();
     $uid = get_uid();
     $options = [
@@ -46,11 +55,11 @@
     $key = gen_key();
     $iv = gen_iv();
     $uid = get_uid();
-    save_key($key, $uid);
-    save_iv($iv, $uid);
+
 
     $c_name = encrypt($name, $key, $iv);
     $c_surname = encrypt($surname, $key, $iv);
+    $c_uname = encrypt($uname, $key, $iv);
     $c_email = encrypt($email, $key, $iv);
 
     //echo "$c_name<br>$c_surname<br>$c_uname<br>$c_email<br>$hash_pwd";
@@ -62,7 +71,7 @@
               '$c_name',
               '$c_surname',
               '$hash_pwd',
-              '$uname',
+              '$c_uname',
               '$c_email'
             );";
 
@@ -72,6 +81,8 @@
       return false;
     }
 
+    save_key($key, $uname);
+    save_iv($iv, $uname);
     setcookie('uname', $uname);
     setcookie('uid', $uid);
 
