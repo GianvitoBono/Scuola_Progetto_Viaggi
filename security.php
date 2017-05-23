@@ -51,19 +51,6 @@
     return null;
   }
 
-  function get_uid() {
-    $file = fopen("./data/ucount.txt","r");
-    $count = fgets($file,1000);
-    fclose($file);
-    $tmp = $count;
-    $count = $count + 1;
-    $file = fopen("./data/ucount.txt","w");
-    fwrite($file, $count);
-    fclose($file);
-
-    return $tmp;
-  }
-
   function gen_key() {
     $secure;
     $bytes = openssl_random_pseudo_bytes(256, $secure);
