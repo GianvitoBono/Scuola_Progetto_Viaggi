@@ -5,8 +5,10 @@
 
 <?php
   $lang = isset($_GET['lang']) ? $_GET['lang'] : null;
+  header('Content-Type: text/html; charset=utf-8');
   if($lang == null) {
     header("Location: " . rtrim($_SERVER['PHP_SELF']) . "?lang=en");
+
     die();
   }
 
@@ -18,6 +20,8 @@
   <head>
     <title>Agenzia Viaggi</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   </head>
   <body class="openSans">
     <?php include 'navbar.php'; ?>
