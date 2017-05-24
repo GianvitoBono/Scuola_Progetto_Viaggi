@@ -34,6 +34,15 @@ body {
 .error {
   color: red;
 }
+
+.uname {
+  position: absolute;
+  right: 100px;
+}
+
+.hide {
+  display: none;
+}
 /*----------------------------------------------------------------------------*/
 
 /* CSS stile custom per il form */

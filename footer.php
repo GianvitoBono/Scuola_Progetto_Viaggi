@@ -1,8 +1,11 @@
-<!--
-  @author: Gianvito Bono
-  @date  : 19-05-2017
---------------------------->
+<?php
 
+/*
+*  @author: Gianvito Bono
+*  @date  : 19-05-2017
+*/
+
+?>
 <footer>
   <center>
   <ul class="lang_chooser">

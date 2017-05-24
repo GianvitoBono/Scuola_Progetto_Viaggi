@@ -1,9 +1,9 @@
-<!--
-  @author: Gianvito Bono
-  @date  : 21-05-2017
---------------------------->
-
 <?php
+
+  /*
+  *  @author: Gianvito Bono
+  *  @date  : 21-05-2017
+  */
 
   function login($uname, $passwd) {
     $conn = getConnection();
@@ -47,14 +47,12 @@
 
   function register($name, $surname, $uname, $passwd, $email) {
     $conn = getConnection();
-    $uid = get_uid();
     $options = [
       'cost' => 12,
     ];
     $hash_pwd = password_hash($passwd, PASSWORD_BCRYPT, $options);
     $key = gen_key();
     $iv = gen_iv();
-    $uid = get_uid();
 
 
     $c_name = encrypt($name, $key, $iv);
@@ -65,9 +63,8 @@
     //echo "$c_name<br>$c_surname<br>$c_uname<br>$c_email<br>$hash_pwd";
 
 
-    $sql = "INSERT INTO users(uid, nome, cognome, password, username, email)
+    $sql = "INSERT INTO users(nome, cognome, password, username, email)
             VALUES(
-              '$uid',
               '$c_name',
               '$c_surname',
               '$hash_pwd',
@@ -84,7 +81,6 @@
     save_key($key, $uname);
     save_iv($iv, $uname);
     setcookie('uname', $uname);
-    setcookie('uid', $uid);
 
     mysqli_close($conn);
     return true;

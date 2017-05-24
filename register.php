@@ -1,9 +1,10 @@
-<!--
-  @author: Gianvito Bono
-  @date  : 21-05-2017
---------------------------->
-
 <?php
+
+  /*
+  *  @author: Gianvito Bono
+  *  @date  : 21-05-2017
+  */
+
   $lang = isset($_GET['lang']) ? $_GET['lang'] : null;
   header('Content-Type: text/html; charset=utf-8');
   if($lang == null) {
@@ -22,13 +23,18 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <script>
+      function hide() {
+        document.getElementById("registration_form").classList.add('hide');
+      }
+    </script>
   </head>
   <body class="openSans">
     <?php include 'navbar.php'; ?>
     <div class="content">
       <div class="centered">
-        <form action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
-        <ul class="customStyle center-vert">
+        <form  action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
+        <ul id="registration_form" class="customStyle center-vert">
             <li>
               <span class="error">
                 <center>
@@ -44,6 +50,7 @@
                       if($name == null || $surname == null || $uname == null || $passwd == null || $re_passwd == null || $email == null) {
                         echo get_string('data_error', test_input($_GET['lang']));
                         echo "<br><br>";
+                        echo "<script>hide();</script>";
                       }
 
                       if($passwd != $re_passwd) {
@@ -51,12 +58,8 @@
                         echo "<br><br>";
                       }
 
-                      register($name, $surname, $uname, $passwd, $email);
-                      if($uid == 0) {
-                        echo get_string('login_error', test_input($_GET ['lang'])) ;
-                        echo "<br><br>";
-                      } else {
-
+                      if(register($name, $surname, $uname, $passwd, $email)) {
+                        echo "<script>hide();</script>";
                       }
                     }
                   ?>

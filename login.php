@@ -1,9 +1,10 @@
-<!--
-  @author: Gianvito Bono
-  @date  : 21-05-2017
---------------------------->
-
 <?php
+
+  /*
+  *  @author: Gianvito Bono
+  *  @date  : 21-05-2017
+  */
+
   $lang = isset($_GET['lang']) ? $_GET['lang'] : null;
   header('Content-Type: text/html; charset=utf-8');
   if($lang == null) {

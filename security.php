@@ -1,9 +1,9 @@
-<!--
-  @author: Gianvito Bono
-  @date  : 21-05-2017
---------------------------->
-
 <?php
+
+	/*
+	*  @author: Gianvito Bono
+	*  @date  : 21-05-2017
+	*/
 
 	function encrypt($str, $key, $iv) {
 		return rtrim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $str, MCRYPT_MODE_CBC, $iv)), "\0\3");
