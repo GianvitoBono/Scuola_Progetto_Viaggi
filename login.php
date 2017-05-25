@@ -28,7 +28,7 @@
     <?php include 'navbar.php'; ?>
     <div class="content">
       <div class="centered">
-        <form action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
+        <form action="<?php echo 'user.php?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
         <ul class="customStyle center-vert">
             <li>
               <span class="error">

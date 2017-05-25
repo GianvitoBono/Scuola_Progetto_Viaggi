@@ -11,12 +11,13 @@
     $key = get_key($uname);
     $iv = get_iv($uname);
 
+
     if($key == null || $iv == null)
-      return false;
+      die();
 
     $c_uname = encrypt($uname, $key, $iv);
 
-    $sql = "SELECT uid, password
+    $sql = "SELECT uid, uname, password
             FROM users
             WHERE username LIKE '$c_uname'";
     $result = mysqli_query($conn, $sql);
@@ -33,8 +34,7 @@
           setcookie('uname', $uname);
           setcookie('uid', $row["uid"]);
           mysqli_close($conn);
-
-          return true;
+          return $res;
         }
       }
 
@@ -46,6 +46,11 @@
   }
 
   function register($name, $surname, $uname, $passwd, $email) {
+    if(check_uname($uname)) {
+      echo get_string("uname_error", test_input($_GET['lang']));
+      die();
+    }
+
     $conn = getConnection();
     $options = [
       'cost' => 12,
@@ -80,8 +85,8 @@
 
     save_key($key, $uname);
     save_iv($iv, $uname);
-    setcookie('uname', $uname);
 
+    login($uname, $passwd);
     mysqli_close($conn);
     return true;
 

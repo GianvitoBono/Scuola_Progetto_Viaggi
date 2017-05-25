@@ -61,4 +61,15 @@
     return mcrypt_create_iv(32, MCRYPT_DEV_RANDOM);
   }
 
+	function check_uname($uname) {
+		$keys = file("./data/keys.bin");
+		foreach ($keys as $key) {
+			$exp_line = explode(";;;", $key);
+	    if($exp_line[0] == $uname) {
+	      return false;
+	    }
+		}
+		return true;
+	}
+
 ?>
