@@ -9,28 +9,22 @@
   header('Content-Type: text/html; charset=utf-8');
   if($lang == null) {
     header("Location: " . rtrim($_SERVER['PHP_SELF']) . "?lang=en");
-
     die();
   }
 
-  include 'user_manager.php';
+  include './scripts/user_manager.php';
 
 ?>
 
 <html>
   <head>
     <title>Agenzia Viaggi</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <script>
-      function hide() {
-        document.getElementById("registration_form").classList.add('hide');
-      }
-    </script>
   </head>
   <body class="openSans">
-    <?php include 'navbar.php'; ?>
+    <?php include './scripts/navbar.php'; ?>
     <div class="content">
       <div class="centered">
         <form  action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
@@ -47,10 +41,11 @@
                       $re_passwd = isset($_POST['re_passwd']) ? test_input($_POST['re_passwd']) : null;
                       $email = isset($_POST['email']) ? test_input($_POST['email']) : null;
 
-                      if($name == null || $surname == null || $uname == null || $passwd == null || $re_passwd == null || $email == null) {
+                      $cond = ($name == null || $surname == null || $uname == null || $passwd == null || $re_passwd == null || $email == null);
+
+                      if($cond) {
                         echo get_string('data_error', test_input($_GET['lang']));
                         echo "<br><br>";
-                        echo "<script>hide();</script>";
                       }
 
                       if($passwd != $re_passwd) {
@@ -58,9 +53,11 @@
                         echo "<br><br>";
                       }
 
-                      if(register($name, $surname, $uname, $passwd, $email)) {
-                        echo "<script>hide();</script>";
-                      }
+                      if(!$cond)
+                        if(register($name, $surname, $uname, $passwd, $email)) {
+                          header("Location: index.php?lang=".$_GET['lang']);
+                        }
+
                     }
                   ?>
                 </center>
@@ -80,6 +77,6 @@
         </form>
       </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include './scripts/footer.php'; ?>
   </body>
 </html>

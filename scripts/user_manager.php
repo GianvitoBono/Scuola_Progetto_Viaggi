@@ -34,7 +34,7 @@
           setcookie('uname', $uname);
           setcookie('uid', $row["uid"]);
           mysqli_close($conn);
-          return $res;
+          return true;
         }
       }
 
@@ -46,9 +46,9 @@
   }
 
   function register($name, $surname, $uname, $passwd, $email) {
-    if(check_uname($uname)) {
+    if(!check_uname($uname)) {
       echo get_string("uname_error", test_input($_GET['lang']));
-      die();
+      return false;
     }
 
     $conn = getConnection();

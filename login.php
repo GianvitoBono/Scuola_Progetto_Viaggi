@@ -13,19 +13,19 @@
     die();
   }
 
-  include 'user_manager.php';
+  include './scripts/user_manager.php';
 
 ?>
 
 <html>
   <head>
     <title>Agenzia Viaggi</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   </head>
   <body class="openSans">
-    <?php include 'navbar.php'; ?>
+    <?php include './scripts/navbar.php'; ?>
     <div class="content">
       <div class="centered">
         <form action="<?php echo 'user.php?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
@@ -42,8 +42,8 @@
                         echo get_string('data_error', test_input($_GET['lang']));
                         echo "<br><br>";
                       }
-                      $uid = login($uname, $passwd);
-                      if($uid == 0) {
+
+                      if(!login($uname, $passwd)) {
                         echo get_string('login_error', test_input($_GET ['lang'])) ;
                         echo "<br><br>";
                       }
@@ -66,6 +66,6 @@
         </form>
       </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include './scripts/footer.php'; ?>
   </body>
 </html>
