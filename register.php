@@ -28,8 +28,10 @@
     <div class="content">
       <div class="centered">
         <form  action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
-        <ul id="registration_form" class="customStyle center-vert">
+        <ul id="registration_form" class="customStyle">
             <li>
+              <h1 style='text-align:center'><?php echo get_string('signup', test_input($_GET['lang'])) ?></h1>
+              <br>
               <span class="error">
                 <center>
                   <?php

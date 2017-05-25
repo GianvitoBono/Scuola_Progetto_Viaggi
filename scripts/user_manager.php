@@ -17,7 +17,7 @@
 
     $c_uname = encrypt($uname, $key, $iv);
 
-    $sql = "SELECT uid, uname, password
+    $sql = "SELECT uid, username, password
             FROM users
             WHERE username LIKE '$c_uname'";
     $result = mysqli_query($conn, $sql);

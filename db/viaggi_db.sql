@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 23, 2017 alle 20:34
+-- Creato il: Mag 25, 2017 alle 23:06
 -- Versione del server: 5.6.26
 -- Versione PHP: 5.6.12
 
@@ -19,32 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `viaggi_db`
 --
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `immagini_viaggi`
---
-
-CREATE TABLE IF NOT EXISTS `immagini_viaggi` (
-  `id_img` int(11) NOT NULL,
-  `viaggio_FK` int(11) NOT NULL,
-  `img` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `preventivi_salvati`
---
-
-CREATE TABLE IF NOT EXISTS `preventivi_salvati` (
-  `id` int(11) NOT NULL,
-  `user_FK` int(11) NOT NULL,
-  `viaggio_FK` int(11) NOT NULL,
-  `n_persone` int(11) NOT NULL,
-  `totale_prezzo` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -73,11 +47,21 @@ INSERT INTO `translations` (`lang_key`, `descrizione`, `lang`) VALUES
 ('email', 'электронная почта', 'ru'),
 ('email', '电子邮件', 'cn'),
 ('email', 'Email', 'fr'),
+('err_travel', 'Devi essere registrato per ottenere il tuo preventivo', 'it'),
+('err_travel', 'You must be registered to get your quote', 'en'),
+('err_travel', 'Вы должны быть зарегистрированы, чтобы получить цитату', 'ru'),
+('err_travel', '你必须注册，以获得您的报价', 'cn'),
+('err_travel', 'Vous devez être enregistré pour obtenir votre devis', 'fr'),
 ('home', 'PAGINA INIZIALE', 'it'),
 ('home', 'HOME', 'en'),
 ('home', 'ГЛАВНАЯ СТРАНИЦА', 'ru'),
 ('home', '主页', 'cn'),
 ('home', 'PAGE D''ACCUEIL', 'fr'),
+('local_select', 'Seleziona una destinazione', 'it'),
+('local_select', 'Select a destination', 'en'),
+('local_select', 'Выберите пункт назначения', 'ru'),
+('local_select', '选择目的地', 'cn'),
+('local_select', 'Sélectionnez une destination', 'fr'),
 ('login', 'ACCEDI', 'it'),
 ('login', 'SIGN-IN', 'en'),
 ('login', 'ВОЙТИ В СИСТЕМУ', 'ru'),
@@ -103,6 +87,11 @@ INSERT INTO `translations` (`lang_key`, `descrizione`, `lang`) VALUES
 ('re_passwd', 'Повторно введите пароль', 'ru'),
 ('re_passwd', '重新输入密码', 'cn'),
 ('re_passwd', 'Ressaisissez le mot de passe', 'fr'),
+('sel_currency', 'Seleziona una valuta', 'it'),
+('sel_currency', 'Please select a currency', 'en'),
+('sel_currency', 'Выберите валюту', 'ru'),
+('sel_currency', '选择货币', 'cn'),
+('sel_currency', 'Sélectionnez une devise', 'fr'),
 ('send', 'Invia', 'it'),
 ('send', 'Send', 'en'),
 ('send', 'послать', 'ru'),
@@ -128,6 +117,11 @@ INSERT INTO `translations` (`lang_key`, `descrizione`, `lang`) VALUES
 ('uname', 'Имя пользователя', 'ru'),
 ('uname', '用户名', 'cn'),
 ('uname', 'Nom d''utilisateur', 'fr'),
+('uname_error', 'Username già usato', 'it'),
+('uname_error', 'Username already in use', 'en'),
+('uname_error', 'Имя пользователя уже используется', 'ru'),
+('uname_error', '用户名已被使用', 'cn'),
+('uname_error', 'Nom d''utilisateur déjà utilisé', 'fr'),
 ('welcome', 'BENVENUTO<br><hr>ACCEDI PER AVERE IL TUO PREVENTIVO', 'it'),
 ('welcome', 'WELCOME<br><hr>SIGN-IN FOR OBTAIN A TRAVEL ESTIMATE', 'en'),
 ('welcome', 'ПРИГЛАШАЕМ<br><hr>ДОСТУП ПОЛУЧИТЬ ЦЕНУ', 'ru'),
@@ -147,7 +141,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(256) NOT NULL,
   `username` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `users`
+--
+
+INSERT INTO `users` (`uid`, `nome`, `cognome`, `password`, `username`, `email`) VALUES
+(35, '/jjvu48y8u+Hj6E3d72PxBkH2kjswfm4RvkX9qcT57w=', 'EmEtPE2PaOi3NGugzxqB/YkW7itN2/gmekGVhfF6cu4=', '$2y$12$PHjLZRThLpNpGNKZ7IW/nONK3tVfAyOgWY.f0s03EJMsjegzMCmyu', 'UsC6R+8uB9Kl8JcWUGGc80ZXIvCK+Jn8rYgehrEEWh8=', 'seovoYj6TPTxLk2fU+G8hJ5RHlic2puyhLa86kJec5k='),
+(36, '0f6aufjDuXFjtofYBJWrfgsp2RL4GWhzxM/m4zn58iI=', 'gg92/lR5+b1sPJiuBH+UvIOC1Fj9Lmh/kHQQ0nGtG20=', '$2y$12$wgsxHU1Vk4.v/2ab/Et8zOm07xN56tsXqlTi0a/SEbOr4wqJL1WI6', 'Z3ziLKLUukbSfNFPLvUEOkEBtgtytHMW7DUgt3ZVyqs=', 'jxI8dVz/boV9CNNGQ7/1sjfS9p/GS23+/LzOAgqtn2A='),
+(37, 'zuTUOe3lZcuGuS2nWRE+6M6ZfQJLXF5AxmsRHY8GolM=', 'xLqV4y8JqGV8wn1wzHSuTgq1QK5bQuAdsb/qsxUu/Bk=', '$2y$12$EWk3LNXY5q8lBTOt1And8up9JDjsNXZSI.Mzjsb2H7m7ZxizKWV6m', '68D6xsxJQsTSsdBVndZTvP6UyI91Rk4xI9NyjQ6ao0E=', '4yiYas9YZd+cHe3IhFijyIMkopBlwFsKa8zn9ig79mA=');
 
 -- --------------------------------------------------------
 
@@ -159,26 +162,41 @@ CREATE TABLE IF NOT EXISTS `viaggi` (
   `localita` varchar(255) NOT NULL,
   `prezzo` double NOT NULL,
   `id_viaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `viaggi`
+--
+
+INSERT INTO `viaggi` (`localita`, `prezzo`, `id_viaggio`) VALUES
+('Rome', 750, 1),
+('New York', 1658, 2),
+('Zurich', 1024, 3),
+('Bali', 2184, 4),
+('Monk', 2057, 5),
+('Munich', 1058, 6),
+('Paris', 800, 7),
+('Las Vegas', 1899, 8),
+('Nassau', 3518, 9),
+('Miami', 1518, 10),
+('Toronto', 1274, 11),
+('Tokio', 2118, 12),
+('Athens', 512, 13),
+('Venice', 816, 14),
+('Barcellona', 489, 15),
+('Tunis', 118, 16),
+('Berlin', 678, 17),
+('London', 777, 18),
+('Innsbruck', 1984, 19),
+('Amsterdam', 420, 20),
+('Edinburgh', 657, 21),
+('Dublin', 845, 22),
+('Dubai', 3598, 23),
+('Robecano City', 99999999, 24);
 
 --
 -- Indici per le tabelle scaricate
 --
-
---
--- Indici per le tabelle `immagini_viaggi`
---
-ALTER TABLE `immagini_viaggi`
-  ADD PRIMARY KEY (`id_img`),
-  ADD KEY `viaggio_FK` (`viaggio_FK`);
-
---
--- Indici per le tabelle `preventivi_salvati`
---
-ALTER TABLE `preventivi_salvati`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_FK` (`user_FK`),
-  ADD KEY `viaggio_FK` (`viaggio_FK`);
 
 --
 -- Indici per le tabelle `translations`
@@ -203,42 +221,15 @@ ALTER TABLE `viaggi`
 --
 
 --
--- AUTO_INCREMENT per la tabella `immagini_viaggi`
---
-ALTER TABLE `immagini_viaggi`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT per la tabella `preventivi_salvati`
---
-ALTER TABLE `preventivi_salvati`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT per la tabella `viaggi`
 --
 ALTER TABLE `viaggi`
-  MODIFY `id_viaggio` int(11) NOT NULL AUTO_INCREMENT;
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `immagini_viaggi`
---
-ALTER TABLE `immagini_viaggi`
-  ADD CONSTRAINT `immagini_viaggi_ibfk_1` FOREIGN KEY (`viaggio_FK`) REFERENCES `viaggi` (`id_viaggio`);
-
---
--- Limiti per la tabella `preventivi_salvati`
---
-ALTER TABLE `preventivi_salvati`
-  ADD CONSTRAINT `preventivi_salvati_ibfk_1` FOREIGN KEY (`user_FK`) REFERENCES `users` (`uid`),
-  ADD CONSTRAINT `preventivi_salvati_ibfk_2` FOREIGN KEY (`viaggio_FK`) REFERENCES `viaggi` (`id_viaggio`);
-
+  MODIFY `id_viaggio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

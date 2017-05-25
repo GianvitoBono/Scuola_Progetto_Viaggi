@@ -7,7 +7,7 @@
   $price = get_price($dest);
   $symbol = get_currency_symbol($currency);
 
-  echo round(($price * $change), 2) . $symbol;
+  echo round(($price * $change), 2) . " " . $symbol;
 
   function get_currency_symbol($currency) {
     $currency_symbols = array(

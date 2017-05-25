@@ -28,9 +28,11 @@
     <?php include './scripts/navbar.php'; ?>
     <div class="content">
       <div class="centered">
-        <form action="<?php echo 'user.php?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
-        <ul class="customStyle center-vert">
+        <form action="<?php echo $_SERVER['PHP_SELF'] . '?lang=' . $_GET['lang'] ?>" method="post" accept-charset="utf-8">
+        <ul class="customStyle">
             <li>
+              <h1 style='text-align:center'><?php echo get_string('login', test_input($_GET['lang'])) ?></h1>
+              <br>
               <span class="error">
                 <center>
                   <?php
@@ -43,7 +45,10 @@
                         echo "<br><br>";
                       }
 
-                      if(!login($uname, $passwd)) {
+                      if(login($uname, $passwd)) {
+                        header("Location: index.php?lang=".$_GET['lang']);
+                        die();
+                      } else {
                         echo get_string('login_error', test_input($_GET ['lang'])) ;
                         echo "<br><br>";
                       }

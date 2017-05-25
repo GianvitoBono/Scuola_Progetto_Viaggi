@@ -26,8 +26,17 @@
     <?php include './scripts/navbar.php'; ?>
     <div class="content">
       <div class="centered customStyle">
-        <h1 class="center"><?php echo get_string("get_estimate", test_input($_GET['lang'])); ?></h1>
         <?php
+          if(!isset($_COOKIE['uid'])) {
+            echo "<h3 style='text-align: center' class='error'>".get_string("err_travel", test_input($_GET['lang']))."</h3>";
+            echo "<br><br>";
+            echo "<a href='login.php?lang='".$_GET['lang'].">".get_string("login", test_input($_GET['lang']))."</a> or <a href='register.php?lang='".$_GET['lang'].">".get_string("signup", test_input($_GET['lang']))."</a>";
+            include 'footer.php';
+            die();
+          }
+
+          echo "<h1 style='text-align:center'>". get_string('travel', test_input($_GET['lang'])) ."</h1>";
+          echo "<br>";
           $conn = getConnection();
           $sql = "SELECT localita
                   FROM viaggi";
@@ -46,10 +55,11 @@
               echo "<option>" . $row['localita'] . "</option>";
             echo "</select>";
           }
+
         ?>
         <br>
         <select id="currency">
-          <option><?php echo get_string("curr", $_GET['lang']) ?></option>
+          <option><?php echo get_string("sel_currency", $_GET['lang']) ?></option>
         	<option value="USD">United States Dollars</option>
         	<option value="EUR">Euro</option>
         	<option value="GBP">United Kingdom Pounds</option>
@@ -58,7 +68,6 @@
         	<option value="BSD">Bahamas Dollars</option>
         	<option value="BBD">Barbados Dollars</option>
         	<option value="BMD">Bermuda Dollars</option>
-        	<option value="BGL">Bulgaria Lev</option>
         	<option value="CAD">Canada Dollars</option>
         	<option value="CLP">Chile Pesos</option>
         	<option value="CNY">China Yuan Renmimbi</option>
@@ -98,14 +107,10 @@
         	<option value="TWD">Taiwan Dollars</option>
         	<option value="THB">Thailand Baht</option>
         	<option value="TTD">Trinidad and Tobago Dollars</option>
-        	<option value="TRL">Turkey Lira</option>
-        	<option value="VEB">Venezuela Bolivar</option>
-        	<option value="ZMK">Zambia Kwacha</option>
-        	<option value="EUR">Euro</option>
         	<option value="XCD">Eastern Caribbean Dollars</option>
         </select>
         <br><br>
-        <input type="button" id="send" value="<?php echo get_string('send', test_input($_GET ['lang'])); ?>"/>
+        <center><input type="button" id="send" value="<?php echo get_string('send', test_input($_GET ['lang'])); ?>" style="width=90px"/></center>
         <br><br><br>
         <h1 id="prezzo" style="text-align: center;"></h1>
       </div>
