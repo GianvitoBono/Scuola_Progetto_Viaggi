@@ -44,6 +44,16 @@ body {
   display: none;
   z-index: -9999;
 }
+
+.err_log_travel div {
+  display: inline-block;
+}
+
+.err_log_travel a{
+  text-decoration: none;
+  color: #000;
+}
+
 /*----------------------------------------------------------------------------*/
 
 /* CSS stile custom per il form */

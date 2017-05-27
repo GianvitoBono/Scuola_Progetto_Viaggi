@@ -23,3 +23,7 @@
      });
    });
  });
+
+function hide_travels_form() {
+  $("#travels_form").addClass("hide");
+}
